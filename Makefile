@@ -1,9 +1,10 @@
 CC=gcc
 CFLAGS=-I.
-DEPS = symbolicValues/ranges.h
+DEPS = src/symbolicValues/ranges.h
+
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-hellomake: symbolicValues/ranges.o symbolicValues/symbolicValues.o
-	$(CC) -o target/compiled symbolicValues/ranges.o symbolicValues/symbolicValues.o 
+compile: src/symbolicValues/ranges.o src/symbolicValues/symbolicValues.o
+	$(CC) -o target/compiled src/symbolicValues/ranges.o src/symbolicValues/symbolicValues.o 

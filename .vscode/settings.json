@@ -1,5 +1,12 @@
 {
     "files.associations": {
         "ostream": "c"
-    }
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/Matas/Programing/RageSym/target",
+            "binaryPath": "/home/Matas/Programing/RageSym/target/compiled",
+            "binaryArgs": []
+        }
+    ]
 }

@@ -5,17 +5,17 @@
 //makes a new range
 range* makeRange(unsigned long long new_LTOE = 0, unsigned long long new_MTOE = ULLONG_MAX, range *new_next_range = 0){
     range* new_range_ptr = new range();
-    range new_range = *new_range_ptr;
-    new_range.LTOE = new_LTOE;
-    new_range.MTOE = new_MTOE;
-    new_range.next_range = new_next_range;
-    new_range.function_success = 1;
+    (*new_range_ptr).LTOE = new_LTOE;
+    (*new_range_ptr).MTOE = new_MTOE;
+    (*new_range_ptr).next_range = new_next_range;
+    (*new_range_ptr).function_success = 1;
     return new_range_ptr;
 }
 
 //displays a range in a nice way. Takes care of split ranges as well
-void displayRange(struct range range_to_display){
-    printf("displaying range\n");
+void displayRange(range* range_to_display_ptr){
+    range range_to_display = *range_to_display_ptr;
+    printf("displaying range at %p\n", range_to_display_ptr);
     printf("%llu <= x <= %llu \n", range_to_display.LTOE, range_to_display.MTOE);
     range *next_range = range_to_display.next_range;
     while (next_range != 0)
@@ -28,12 +28,11 @@ void displayRange(struct range range_to_display){
 
 //locates a part of the range containing the given num to search for. Returns a range with success 0 if it failed
 range* locate_part_containing(range *search_range, unsigned long long num){
-    printf("searching starting: %p\n", search_range);
     range* original_search_range = search_range;
     //check current range
     if ((*search_range).LTOE <= num && (*search_range).MTOE >= num){
         (*search_range).function_success = 1;
-        printf("found in first range. Returning: %p \n", search_range);
+        printf("found in first range\n");
         return search_range;
     }
     //otherwise loop through the rest of the ranges trying to find one

@@ -17,7 +17,7 @@ struct range
 //makes a new range
 range* makeRange(unsigned long long new_LTOE, unsigned long long new_MTOE, range *new_next_range);
 //displays a range in a nice way. Takes care of split ranges as well
-void displayRange(struct range range_to_display);
+void displayRange(range* range_to_display);
 //locates a part of the range containing the given num to search for. Returns a range with success 0 if it failed
 range *locate_part_containing(range *search_range, unsigned long long num);
 

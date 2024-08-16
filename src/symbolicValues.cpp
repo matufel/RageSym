@@ -91,6 +91,9 @@ class symVal {
         }
 
         //adjust range for modulo
+        void modulo(unsigned long long num){
+            
+        }
 
         //adjust range addition
         void add(unsigned long long num){

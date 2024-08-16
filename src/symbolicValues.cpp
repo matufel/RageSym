@@ -76,6 +76,19 @@ class symVal {
         }
 
         //adjust range for division
+        void divide(unsigned long long num){
+            //increases the step of the range
+            step = step/num;
+            //loop through range multiplying the lower and upper bound accordingly
+            range* next_range = first_range;
+            while (next_range != 0)
+            {
+                next_range->LTOE = next_range->LTOE/num;
+                next_range->MTOE = next_range->MTOE/num;
+                next_range = next_range->next_range;
+            }
+            //TODO: combine ranges if possible
+        }
 
         //adjust range for modulo
 
@@ -107,11 +120,11 @@ class symVal {
 int main(){
     symVal testValue(0, 100);
 
-    testValue.equals(50);
+    testValue.notEquals(50);
 
     testValue.displaySymValue();
 
-    testValue.add(5);
+    testValue.divide(5);
 
     testValue.displaySymValue();
 

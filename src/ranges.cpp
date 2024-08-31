@@ -44,7 +44,7 @@ range* locate_part_containing(range *search_range, unsigned long long num){
             (*search_range).function_success = 1;
             return search_range;
         }
-        next_range = (*search_range).next_range;
+        next_range = search_range->next_range;
     }
     //if have not returned by now it means that the given number does not exist in the range
     (*original_search_range).function_success = 0;
